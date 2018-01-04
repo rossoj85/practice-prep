@@ -7,6 +7,22 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
-function palindrome(str) {}
+var reversefunc = require('../reversestring')
 
+
+// function palindrome(str) {
+//     if(reversefunc(str)===str) return true
+
+//     return false
+// }
+// palindrome('tot')
+
+//In this function we check every character of the string against its mirror on 
+//the other side of the array
+function palindrome(str){
+    return str.split('').every((char,i)=>{
+      return char===str[str.length-1-i]
+    })
+  }
+  
 module.exports = palindrome;

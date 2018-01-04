@@ -11,11 +11,37 @@
 //     q.peek();  // returns 1
 //     q.remove(); // returns 1
 //     q.remove(); // returns 2
-// test commit 
-//testing again
-//another test
+// test commit
 const Stack = require('./stack');
 
-class Queue {}
+function reverseStacks(initialStack,endStack){
+    while(initialStack.peek()){
+      endStack.push(initialStack.pop())
+    }
+  }
+  
+  class Queue {
+    constructor(){
+      this.addStack= new Stack()
+      this.returnStack=new Stack()
+    }
+    add(data){
+      this.addStack.push(data)
+      
+      
+    }
+    remove(data){
+      reverseStacks(this.addStack,this.returnStack)
+      var currReturn = this.returnStack.pop()
+      reverseStacks(this.returnStack,this.addStack)
+      return currReturn
+    }
+    peek(){
+        reverseStacks(this.addStack,this.returnStack)
+        var currPeek = this.returnStack.peek()
+        reverseStacks(this.returnStack,this.addStack)
+        return currPeek
+    }
+  }
 
 module.exports = Queue;
