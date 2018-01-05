@@ -34,18 +34,25 @@ class LinkedList {
         }
         return totalNodes
       }
-    getFirst(){
-        return this.head
+    getFirst(){ //ASK INTERVIEWER ARE WE GOING TO HAVE TO WRITE ADDITIONAL
+                //GET METHODS? IF SO, MAYBE I SHOULD JUST WRITE GET AT INSTEAD
+                //OF GET FIRST
+
+        // return this.head
+        return this.getAt(0)
     }
     getLast(){
-        if(!this.head) return;
-        let currentNode=this.head
+    //     if(!this.head) return;
+    //     let currentNode=this.head
         
-    while(currentNode.next){
-      currentNode=currentNode.next
+    // while(currentNode.next){
+    //   currentNode=currentNode.next
+    // }
+    // return currentNode
+    return this.getAt(this.size()-1)
     }
-    return currentNode
-    }
+
+
     //when there is no refernce ot an object in javascritp, it will automatically be
     //garbage collected. therefore the entire list gets GC'ed when we set the head
     //to null
@@ -71,7 +78,7 @@ class LinkedList {
            currentNode=currentNode.next
         }
         previousNode.next=null
-      }
+    }
     insertLast(data){
         let newNode = new Node(data)
         if(!this.head) {
@@ -150,8 +157,26 @@ class LinkedList {
              currentIndex++
             }
             previousNode.next=newNode //<<<<--alt to the above if statement
-          }
-      
+    }
+    forEach(callback){
+        let currentNode = this.head
+        let index =0
+
+        while(currentNode){
+            callback(currentNode)
+            currentNode=currentNode.next
+            index++
+        }
+        return null
+    }
+    *[Symbol.iterator](){
+        let node=this.head;
+      while(node){
+        yield node;
+        node=node.next
+        }
+    }
 }
+
 
 module.exports = { Node, LinkedList };
