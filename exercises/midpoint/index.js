@@ -12,6 +12,36 @@
 //   l.insertLast('c')
 //   midpoint(l); // returns { data: 'b' }
 
-function midpoint(list) {}
+function midpoint(list) {
+    var currentNode= list.head
+    console.log(currentNode)
+
+    let slow= currentNode
+    let fast = currentNode
+
+  while(fast){
+    fast=fast.next ||null
+    if(!fast) return slow
+    fast=fast.next || null
+    if(!fast) return slow
+    slow = slow.next
+  }
+  return slow
+}
+
+// slightly condensed    //remember you can put two conditions in for loop
+function midpoint(list){
+    var currentNode= list.head
+    console.log(currentNode)
+
+    let slow= currentNode
+    let fast = currentNode
+
+    while(fast.next&&fast.next.next){
+        slow=slow.next;
+        fast=fast.next.next
+    }
+    return slow
+}
 
 module.exports = midpoint;
