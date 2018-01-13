@@ -32,5 +32,5 @@ class Events {
     delete this.events[eventName]
   }
 }
-
+console.log(new  Events())
 module.exports = Events;

@@ -292,7 +292,7 @@ describe('ForEach', () => {
   });
 });
 
-describe('for...of loops', () => {
+describe.skip('for...of loops', () => {
   test('works with the linked list', () => {
     const l = new List();
 
