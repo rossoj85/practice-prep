@@ -53,11 +53,28 @@ function selectionSort(arr) {
 }
 
 function mergeSort(arr) {
+  if(arr.length<2) return arr 
+  let mid = Math.ceil(arr.length/2)
+  let left=arr.slice(0,mid)
+  let right=arr.slice(mid) ///if no endpoin is specified for slice, it iwll go to end of array
 
+
+  
+  return merge(mergeSort(left),mergeSort(right))
+  
 }
 
-function merge(left, right) {
-
+function merge (left, right) {
+  let results =[]
+  console.log('HIIIIIIIII')
+  while(left.length&&right.length){
+    if(left[0]<right[0]){ results.push(left.shift())
+    }
+    else results.push(right.shift())
+  }
+  
+  return [...results,...left,...right]
+//  return left.length ? results.concat(left):results.concat(right)
 }
 
-module.exports = { bubbleSort, selectionSort, mergeSort };
+module.exports = { bubbleSort, selectionSort,merge, mergeSort };
